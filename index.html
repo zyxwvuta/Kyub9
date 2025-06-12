@@ -296,7 +296,6 @@
                 additionalPhotos: [
                     'assets/models/photos/saudi_mabkhara_1.0.png',
                     'assets/models/photos/main_color_Black.png',
-                    'assets/models/photos/steel.png',
                     'assets/models/photos/wood_Oud_texture.png'
                 ],
                 formats: { blend: 'assets/models/blend/Saudi_Mabkhara_1.0.blend', fbx: 'assets/models/fbx/Saudi_Mabkhara_1.0.fbx', textures: 'assets/models/texture/oud_texture.zip' },
@@ -314,10 +313,10 @@
             {
                 id: 'model5',
                 name: 'Saudi Arabia Flag animated | علم السعودية متحرك',
-                mainPhoto: 'assets/models/photos/saudi_flag.png',
+                mainPhoto: 'assets/models/photos/Saudi_Flag.jpg',
                 additionalPhotos: [
-                    'assets/models/photos/saudi_flag2.png',
-                    'assets/models/photos/saudi_flag.png',
+                    'assets/models/photos/Saudi_Flag.jpg',
+                    'assets/models/photos/Saudi_Flag2.jpg',
                     'assets/models/photos/saudi_flag_texture_str.png'
                 ],
                 formats: { blend: 'assets/models/blend/Saudi_Flag.blend', fbx: 'assets/models/fbx/Saudi_Flag.fbx', textures: 'assets/models/texture/saudi_Flag_Texture.jpg.zip' },
@@ -351,7 +350,7 @@
                 mainPhoto: 'assets/models/photos/Keyboard1.0.png',
                 additionalPhotos: [
                     'assets/models/photos/Keyboard1.0.png',
-                    'assets/models/photos/Keyboard1.0_2.png',
+                    'assets/models/photos/Keyboard1.02.jpg',
                 ],
                 formats: { blend: 'assets/models/blend/KeyBoard1.0.blend', fbx: 'assets/models/fbx/KeyBoard1.0.fbx' },
             },
@@ -475,11 +474,11 @@
                     Kyūb9
                 </div>
                 <nav class="flex flex-wrap justify-center gap-4 text-lg">
-                    <button id="nav-home" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Home</button>
-                    <button id="nav-free-models" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Free Models</button>
-                    <button id="nav-my-projects" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">My Projects</button>
-                    <button id="nav-articles" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Articles</button>
-                    <button id="nav-about-us" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">About Us</button>
+                    <button id="nav-home" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">الرئيسية</button>
+                    <button id="nav-free-models" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">نماذج مجانية</button>
+                    <button id="nav-my-projects" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">مشاريعنا</button>
+                    <button id="nav-articles" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">مقالات</button>
+                    <button id="nav-about-us" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">نبذة عنا</button>
                 </nav>
                 <div class="flex items-center gap-4 mt-4 sm:mt-0">
                     <a href="https://www.instagram.com/kyub9p/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
@@ -541,7 +540,7 @@ function createHomePageComponent() {
 
   <!-- Artist -->
   <div class="flex flex-col items-center px-4">
-    <img src="./assets/icons/artist.png" alt="artist icon" class="w-16 h-16 mb-4">
+    <img src="./assets/icons/artist.jpg" alt="artist icon" class="w-16 h-16 mb-4">
     <h3 class="font-semibold text-lg mb-1">فنان؟</h3>
     <p class="text-xs">
 تقدر تستفيد من النماذج الجاهزة هنا  تساعدك تطبق أفكارك اسرع او تضيف لمسة لأعمالك ومشاريعك بستخدام مشهد/استوديو/ نموذج جاهز وبكذا توفّر وقتك، وجهدك لشغل أهم بدل ما تبدأ من الصفر وتنشئ كل شي بنفسك</p>
@@ -801,30 +800,32 @@ function createHomePageComponent() {
             section.className = 'py-12 px-4 md:px-8 lg:px-16 flex flex-col lg:flex-row items-center justify-center min-h-[calc(100vh-80px)]';
             section.innerHTML = `
                 <div class="lg:w-2/3 text-center lg:text-left mb-8 lg:mb-0 lg:pr-12">
-                    <h2 class="text-4xl font-bold mb-6 text-blue-400">About Us</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-blue-400">نبذة عنا</h2>
                     <p class="text-lg text-gray-300 leading-relaxed max-w-prose mx-auto lg:mx-0">
-                        Welcome to Kyub9! I'm passionate about 3D modeling and development, and this platform is my way of sharing that passion with you. Here, you'll find a collection of free 3D models suitable for various uses, from game development and learning to testing and personal projects. My goal is to foster a community where creativity thrives and resources are freely accessible.
+                        بدأت رحلتي في هذا المجال قبل خمس سنوات، وفي عام 2025 أنشأت هذا الموقع وحسابات المشروع على المنصات تحت اسم kyub9، وهدفنا في مشروع كيوب ناين هو تسهيل الطريق لكل مهتم بمجال النمذجة ثلاثية الأبعاد، سواء كان مبتدئ أو لديه خبرة  
+
+                        
                         <br /><br />
-                        Beyond the models, I also share insights and tutorials in the articles section, covering topics from optimization techniques to advanced rendering. The "My Projects" section showcases some of my professional and personal endeavors, giving you a glimpse into the diverse range of work I undertake. Whether you're a seasoned developer, an aspiring artist, or just curious about the world of 3D, I hope you find something valuable here.
+                        من شروحات على حساباتنا  ومقالات هنا علي الموقع، نشرح أدوات وتقنيات ممكن تكون معقدة على البعض، ونبسطها بأفضل طريقة ممكنة. ونوفر نماذج وأدوات مجانية تساعد المبتدئين، المحترفين، مطوري الألعاب، وأي أحد يحب يجرب أفكار جديدة بدون ما يبدأ من الصفر، وبدون تكلفة مادية
                         <br /><br />
-                        Thank you for visiting, and I look forward to connecting with you!
+                        نطمح نكون مرجع بسيط وواضح، يختصر عليك وقت وجهد كثير
                     </p>
                 </div>
                 <div class="lg:w-1/3 flex flex-col items-center lg:items-end gap-6">
-                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Connect With Me</h3>
+                    <h3 class="text-lg font-semibold text-blue-400 mb-4">لتواصل</h3>
                     <div class="flex flex-wrap justify-center lg:justify-end gap-4">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.64 4.931 4.887.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.07 4.85-1.64 4.931 1.64 4.931 4.887 4.931-1.64.058-1.64.069-4.849.069-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.779-1.64-4.931-4.887-.058-1.265-.069-1.645-.069-4.849 0-3.204.012-3.584.07-4.85 1.64-4.931 1.64-4.931 4.887-4.931zM12 0c-3.695 0-4.175.014-5.617.07C2.69 0 0 2.69 0 6.383c-.056 1.442-.07 1.922-.07 5.617s.014 4.175.07 5.617c.148 3.252 1.64 4.779 4.887 4.931 1.265.058 1.645.069 4.849.069 3.204 0 3.584-.012 4.85-.07 3.252-.148 4.779-1.64 4.931-4.887.058-1.265.069-1.645.069-4.849 0-3.204.012-3.584-.07-4.85-1.64-4.931-1.64-4.931 4.887-4.931zM12 5.833c3.402 0 6.167 2.765 6.167 6.167s-2.765 6.167-6.167 6.167-6.167-2.765-6.167-6.167 2.765-6.167 6.167-6.167zm0 2c-2.302 0-4.167 1.865-4.167 4.167s1.865 4.167 4.167 4.167 4.167-1.865 4.167-4.167-1.865-4.167-4.167-4.167zm6.495-3.138c-.805 0-1.458.653-1.458 1.458 0 .805.653 1.458 1.458 1.458s1.458-.653 1.458-1.458c0-.805-.653-1.458-1.458-1.458z"/></svg>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.81 16.5c-.75-.33-1.25-.83-1.25-1.58 0-.58.33-1.08.83-1.33.5-.25 1.08-.33 1.58-.08.5.25.75.75.75 1.25 0 .5-.25.92-.67 1.17-.42.25-.83.33-1.25.08zm4.56-5.5c-.33-.67-.83-1.17-1.58-1.5-.75-.33-1.5-.42-2.17-.25-.67.17-1.17.58-1.5 1.08-.33.5-.42 1.08-.25 1.75.17.67.58 1.17 1.08 1.5.5.33 1.08.42 1.75.25.67-.17 1.17-.58 1.5-1.08.33-.5.42-1.08.25-1.75zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm-1.5 14c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.5 18h-2.5v-12h2.5c2.761 0 5 2.239 5 5s-2.239 5-5 5zm0-8h-1.5v6h1.5c1.654 0 3-1.346 3-3s-1.346-3-3-3zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm-1.5 18h-2.5v-12h2.5c2.761 0 5 2.239 5 5s-2.239 5-5 5zm0-8h-1.5v6h1.5c1.654 0 3-1.346 3-3s-1.346-3-3-3z"/></svg>
-                        </a>
+                    <a href="https://www.instagram.com/kyub9p/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                         <img src="./assets/icons/instagram3.svg" alt="instagram icon" class="w-6 h-6">
+                    </a>
+                    <a href="https://www.pinterest.com/Kyub9/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                        <img src="./assets/icons/pinterest.svg" alt="pinterest icon" class="w-6 h-6">
+                    </a>
+                    <a href="https://www.threads.com/@kyub9p" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                        <img src="./assets/icons/threads.svg" alt="threads app icon" class="w-6 h-6">
+                    </a>
                     </div>
                     <p class="text-lg text-gray-300 mt-6">
-                        Email: <a href="mailto:your.email@example.com" class="text-blue-400 hover:underline">your.email@example.com</a>
+                        Email: <a href="mailto:cb1lup.communication@gmail.com" class="text-blue-400 hover:underline">cb1lup.communication@gmail.com</a>
                     </p>
                 </div>
             `;
