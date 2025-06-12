@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> اساسيات بلندر - Kyub9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text color */
+            line-height: 1.6;
+        }
+        .article-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #2d3748; /* bg-gray-700 equivalent */
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+         ol {
+            list-style-type: decimal; /* Ensures numbering like 1., 2., 3. */
+            padding-right: 25px; /* Adjust padding for numbering if needed */
+            margin: 0; /* Remove default margin */
+        }
+        li {
+            margin-bottom: 15px; /* Space between list items */
+            font-size: 0.95em;
+            line-height: 1.95;
+        }
+        li:last-child {
+            margin-bottom: 0; /* No bottom margin for the last item */
+        }
+
+         /* Style for the Arabic text direction */
+        .arabic-text {
+            direction: rtl; /* Right-to-left direction for Arabic */
+            text-align: right;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #9f7aea; /* Purple */
+            margin-bottom: 1rem;
+        }
+        .article-meta {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #4a5568;
+            padding-bottom: 1rem;
+        }
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .article-content p {
+            margin-bottom: 1rem;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #6366f1; /* Indigo-500 */
+            color: white;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #4f46e5; /* Indigo-600 */
+        }
+    </style>
+</head>
+<body>
+    <div class="article-container">
+        <h1> اساسيات واجهة بلندر 🧊</h1>
+        <div class="article-meta">
+            Published on: January 15, 2023
+        </div>
+        <div class="article-content">
+            <div class="arabic-text">
+                <p class="text-sm">إذا أنت جديد على بلندر، هذا الشرح لك.</p>
+                <p class="text-sm" >في هالصفحة راح نتعرّف على شكل البرنامج أول ما يشتغل، و وش معنى كل جزء من الواجهة. من الشريط اللي فوق، لمنطقة الشغل اللي بالنص، إلى الشريط اللي تحت. كل واحد له وظيفة، وإذا عرفتها من البداية، راح تسهّل عليك استخدام البرنامج بشكل كبير.</p>
+                <p class="text-sm">جاهز؟ يلا نبدأ مع أول نظرة على واجهة بلندر 👇</p>
+            </div>
+            <div class="arabic-text">
+                <h1 class="text-lg">🎬 شاشة البداية (Splash Screen)</h1>
+                <p class="text-sm">أول ما تشغّل بلندر، راح تطلع لك نافذة صغيرة في النص — هذي</p>
+                <img src="/assets/pictures/first_screen.png" alt="first screen">
+                <p class="text-sm font-bold">: تعرض لك خيارات سريعة للبدء، مثل </p>
+                <p class="text-sm">🔹 مشروع جديد (New File)</p>
+                <p class="text-sm">📂 فتح ملف قديم (Open/Recent Files)</p>
+                <p class="text-sm" >🔄 استرجاع آخر جلسة (Recover Last Session)</p>
+                <p class="text-sm">💡 إصدار بلندر وملاحظات التحديث (What's New)</p>
+                <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+            </div>
+
+            <img src="/assets/pictures/blender_0.png" alt="Blender first screen">
+            <ol class="arabic-text">
+                 <h2 class="text-lg font-bold">🪟 مكوّنات واجهة بلندر</h2>
+                 <p class="text-sm" dir="rtl">واجهة بلندر تنقسم إلى مستطيلات يسمّونها "المناطق <strong>(Areas)</strong>  وكل منطقة مخصصة لعرض أداة أو محرر معيّن، مثل: </p>
+                 <p class="text-sm font-bold" >🔹 نافذة العرض ثلاثي الأبعاد (3D Viewport) وهي الي نشتغل فيها</p>
+                 <img src="/assets/pictures/viewport0.png" alt="3d_viewport"  width="680">
+                 <p class="text-sm font-bold">🔹 قائمة العناصر (Outliner)</p>
+                 <p class="text-sm">منها نشوف النماذج، نغير الاسم، نرتب المشهد، ،نسوي  مجموعات لنماذج</p>
+                 <img src="/assets/pictures/outliner.png" alt="outliner"  width="580">
+              
+                 <h2 class="font-bold">🧰 مساحة العمل الافتراضية (Default Workspace)</h2>
+                 <img src="/assets/pictures/workspaces_layout.png" alt="workspace layout"  width="680">
+                 <p class="text-sm" >🔹 Properties – ازرق، أسفل اليمين: فيها كل الإعدادات اللي تخص المجسمات، الخامات، الإضاءة، والكاميرا وغيرها.</p>
+                 <p class="text-sm">🔹 Timeline – احمر، أسفل اليسار: تستخدمها لتحريك النماذج يعني تسوي انميشن و وتضبط الفريمات. </p>
+                 <p class="text-sm">كل منطقة (Area) تشتغل كمحرر مستقل، وتقدر تغيّر محتواها حسب الحاجة. يعني ممكن تخلي أكثر من محرر ظاهر بنفس الوقت عشان تسهّل شغلك.</p>
+                 <p class="text-sm font-bold" dir="rtl"> المناطق هذي تتجمّع داخل شيء يسمّى <strong>  "مساحات العمل (Workspaces)"</strong>  ، وكل مساحة عمل مخصصة لنوع معيّن من المهام، زي: </p>
+                 <p class="text-sm">✨ النمذجة</p>
+                 <p class="text-sm" >🎥 التحريك</p>
+                 <p class="text-sm" >🖌️ التلوين</p>
+                 <p class="text-sm" >📸 التصيير</p>
+                 <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+                
+                 <h2 class="text-lg font-bold">🧩 مساحات العمل (Workspaces)</h2>
+                 <img src="/assets/pictures/workspaces_dif.png" alt="workspaces" width="600">
+                 <p class="text-sm"> 🌟 وهذي صورة للمساحات او بيئات العمل المختلفة</p>
+                 <p class="text-sm">بهالشكل، تقدر تنتقل بين المهام بسهولة وكل مساحة تكون مجهزة بالأدوات المناسبة لها.</p>
+
+                <li>
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+                    <strong dir="rtl">الشريط العلوي (Topbar):</strong> فيه القوائم الرئيسية مثل الحفظ، الاستيراد، الإعدادات، والتصدير.
+                    <img src="/assets/pictures/topbar.png" alt="Topbar" width="300">
+                </li>
+                <li>
+                    <strong dir="rtl">منطقة العمل (Areas):</strong> 
+                    <p class="text-sm"> تقدر تتحكم بحجم ومكان كل منطقة من مناطق العمل بكل سهولة، وتقدر بعد تقسّم الشاشة إلى مناطق جديدة حسب اللي تحتاجه . </p>
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+                    <img src="/assets/pictures/areas_borders.png" alt="areas" width="300">
+                    <img src="/assets/pictures/areas_resize.png" alt="areas_resize" width="300">
+
+                    <h2 class="text-lg font-bold">📐 التحكم في تقسيم النوافذ (Docking)</h2>
+                    <p class="text-sm font-bold">العملية بسيطة وتفاعلية:</p>
+                    <p class="text-sm">🔸 قرّب الماوس على زاوية أي نافذة (Area)، وبتلاحظ إن شكل المؤشر يتغير لـ علامة (+).</p>
+                    <p class="text-sm">🔸 أول ما يصير شكل الماوس (+)، اضغط واسحب بزر الماوس الأيسر (LMB) عشان تسوي واحدة من هذي الحركات:</p>
+                    <p class="text-sm">كبّر أو تصغّر حجم المنطقة</p>
+                    <p class="text-sm">قسم المنطقة إلى قسمين (أفقي أو عمودي)، بحيث يكون عندك أكثر من أداة قدامك بنفس الوقت.</p>
+                    💡 إذا غيرت رأيك، اضغط زر Esc أو الزر الأيمن للماوس (RMB) قبل ما تترك الماوس، وراح يتم إلغاء العملية.بهالشكل تقدر ترتّب الواجهة بالطريقة اللي تريحك وتناسب شغلك.
+                    
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+                </li>
+                <li>
+                    <h2 class="text-lg font-bold">🧭 الشريط العلوي (Header)</h2>
+                    <img src="/assets/pictures/header.png" alt="header" width="600">
+                    <h2 class="font-bold">🔹 وش هو الـ Header؟</h2>
+                    <p class="text-sm">الـ Header هو شريط أفقي يجي فوق كل نافذة (Area) في بلندر، كل محرر (زي الـ 3D View أو التايملاين) له Header خاص فيه، يحتوي على قوائم وأدوات مهمة</p>
+
+                    <p class="text-sm">نبدا اول شي من اليمين </p>
+                    <p class="font-bold text-sm">👓 أوضاع العرض داخل الـ Viewport:</p>
+                    <h2 class="font-bold">📉 Wireframe (الإطار السلكي)</h2>
+                    <img src="/assets/pictures/wireframe.png" alt="wireframe view" width="500">
+                    <p class="text-sm">يوريك الخطوط والهندسة فقط بدون ألوان أو إضاءة.</p>
+                    <p class="text-sm">مفيد لما تشتغل على التفاصيل أو تتأكد من البُنية.</p>
+                    <h2 class="font-bold">🧱 Solid Mode (الوضع الصلب)</h2>
+                    <img src="/assets/pictures/solid.png" alt="solid view" width="500">
+                    <p class="text-sm">يعرض المجسم بلون رمادي أو لون بسيط.</p>
+                    <p class="text-sm">يساعدك تركز على الشكل بدون تشويش من الإضاءة أو الخامات.</p>
+                    <h2 class="font-bold">🎨 Material Preview (معاينة الخامات)</h2>
+                    <img src="/assets/pictures/material.png" alt="material view" width="500">
+                    <p class="text-sm">عرض لك الخامات والألوان بشكل تقريبي، بإضاءة تجريبية.</p>
+                    <p class="text-sm">ممتاز لمراجعة المواد بدون وقت الرندر الطويل.</p>
+                    <h2 class="font-bold">🌐 Rendered Mode (الوضع النهائي/الرندر)</h2>
+                    <img src="/assets/pictures/render.png" alt="render viewport" width="500">
+                    <p class="text-sm">يعطيك نتيجة شبه نهائية، بالإضاءة الواقعية والظلال والتفاصيل.</p>
+                    <p class="text-sm">يشتغل حسب المحرك اللي مختاره (Eevee أو Cycles).</p>
+
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+                    <p class="text-sm">والحين نروح لليسار</p>
+                    <h2 class="font-bold">📋 القوائم المنبثقة (Popup Menus)</h2>
+                    <p class="text-sm">✨ أشياء تقدر تسويها بالقوائم المنبثقة:</p>
+                    <img src="/assets/pictures/menus.png" alt="menus" width="400">
+
+                    <p class="text-sm">إضافة نماذج أو مجسمات، تحريك أو تغيير مكان الكاميرا، تطبيق تأثيرات على المجسمات، وغيرها كثير.</p>
+
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+                    <h2 class="font-bold">🎛️ قائمة اختيار الوضع - Mode Select</h2>
+                    <img src="/assets/pictures/modes.png" alt="modes" width="300">
+                    <p class="text-sm font-bold">🌟 أهم وضعين للمبتدئين:</p>
+                    <h2 class="font-bold">🔹  Object Mode (وضع الكائن): هذا هو الوضع الأساسي اللي تبدأ فيه.</h2>
+                    <img src="/assets/pictures/object_mode.png" alt="object mode main" width="200">
+                    <p class="text-sm">قدر تضيف فيه مجسمات (زي مكعب، كرة، أسطوانة...).</p>
+                    <p class="text-sm">تقدر تحرك المجسم، تكبّره أو تصغّره (Scale)، أو تدوّره (Rotate).</p>
+                    <p class="text-sm">حتى تقدر تبدأ فيه تحريك (Animation) المجسمات.</p>
+
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+                    <h2 class="font-bold">🟧 Edit Mode (وضع التعديل)</h2>
+                    <img src="/assets/pictures/edit_mode copy.png" alt="edit mode main" width="200">
+
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+                    <img src="/assets/pictures/editmode0.png" alt="edit mode 0"  width="400">
+                    <p class="text-sm">🔪 Subdivide: تقسم سطح المجسم عشان تضيف تفاصيل أكثر.</p>
+                    <p class="text-sm">🎯 تحريك العناصر: تقدر تحرّك النقاط (Vertices)، الحواف (Edges)، والسطوح (Faces).</p>
+                    <p class="text-sm">🧵 تفاصيل أكثر = شكل أنعم: كل ما زادت التفاصيل، صار المجسم أنعم وأسهل بالتشكيل أو النحت<p>
+                    <p class="text-sm">💡 أساسي للجودة والتأثيرات: الوضع هذا ضروري لو تبغى تصمم شي بجودة عالية أو تضيف تأثيرات واقعية.</p>
+
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+                    <h2 class="font-bold">🧰 وأخيراً… قائمة الأدوات (Tools)</h2>
+                    <p class="text-sm">هذي القائمة تحتوي على ادوات مهمه و 🔄 تتغيّر حسب الوضع (Mode)</p>
+                    <img src="/assets/pictures/tools.png" alt="tools" width="100">
+                    <p class="font-bold text-sm">🚀 في Object Mode:</p>
+                    <p class="text-sm">ظهر أدوات لتحريك المجسم، تدويره، وتغيير حجمه.</p>
+                    <p class="font-bold text-sm">💻 في Edit Mode:</p>
+                    <p>تظهر أدوات لتقسيم المجسم (Subdivide) وتعديله وتشكيله.</p>
+
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+
+                    <p class="text-sm">⚙️ وكل وضع (Mode) له أدواته الخاصة حسب المهمة اللي تسويها.</p>
+                    <h2 class=" font-bold">🔑 اختصارات عامة (Global Keys)</h2>
+                    <p class="text-sm font-bold">🗂️ Ctrl + O: فتح ملف جديد</p>
+                    <p class="text-sm font-bold">💾 Ctrl + S: حفظ الملف</p>
+                    <p class="text-sm font-bold">↩️ Ctrl + Z: تراجع</p>
+                    <p class="text-sm font-bold">↪️ Shift + Ctrl + Z: إعادة التراجع</p>
+                    <p class="text-sm font-bold">❌ Ctrl + Q: الخروج من البرنامج</p>
+                    <p class="text-sm font-bold">🆘 F1: المساعدة</p>
+                    <p class="text-sm font-bold">❌ X: حذف (مع تأكيد)</p>
+                    <p class="text-sm font-bold">🔘 A: تحديد الكل</p>
+                    <p class="text-sm font-bold">❎ Alt + A / ضغط A مرتين: إلغاء التحديد</p>
+                    <p class="text-sm font-bold">🔄 Ctrl + I: عكس التحديد</p>
+                    <p class="text-sm font-bold">👁️‍🗨️ H: إخفاء المحدد</p>
+                    <p class="text-sm font-bold">🚫 Shift + H: إخفاء غير المحدد</p>
+                    <p class="text-sm font-bold">👀 Alt + H: إظهار المخفي</p>
+                    <p class="text-sm font-bold">🧰 T: إظهار/إخفاء الشريط الجانبي (Tools)</p>
+                    <p class="text-sm font-bold">⚙️ N: إظهار/إخفاء الشريط الجانبي (Properties)</p>
+                    <p class="text-sm font-bold">🧱 Tab: التبديل بين Object/Edit Mode</p>
+
+                    <p style="color: rgb(187, 1, 255);">______________________________</p>
+
+                    <h2 class="font-bold">🍎 لأجهزة الماك (macOS)</h2>
+                    <p class="text-sm">بدل Ctrl استخدم Cmd في معظم الأوامر</p>
+                    <p style="color: rgb(187, 1, 255);">_______________________________________________</p>
+                    <h2 class="font-bold">🤍 الخاتمة:</h2>
+                    <p class="text-sm">هذا كان شرح مبسّط لأهم أساسيات واجهة بلندر واختصاراته المهمة. حاولنا نخلي المعلومات خفيفة وسهلة، خصوصاً للمبتدئين اللي توهم داخلين عالم التصميم الثلاثي الأبعاد.</p>
+                    <p class="text-sm">بلندر برنامج قوي جداً، وكل ما تعلّمت أكثر، كل ما زادت قدرتك على الإبداع! ✨</p>
+                    <p class="text-sm" >ابدأ خطوة بخطوة، لا تستعجل، وخل عندك فضول تجرب وتستكشف بنفسك.</p>
+                    <p class="text-sm">ذا واجهتك صعوبات أو حسّيت الدنيا معقدة، تواصلو معي، ولتذكّر: كل المحترفين كانوا مبتدئين مثلك في يوم من الأيام</p>
+                    <p class="text-sm">بالتوفيق ! 🎨🧡</p>
+                    
+
+
+
+
+                </li>
+            </ol>
+        </div>
+        <a href="../index.html#articles" class="back-button">Back to Articles</a>
+    </div>
+</body>
+</html>

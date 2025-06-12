@@ -1,8 +1,1014 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyub9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Noto+Sans+Arabic:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* Custom CSS for body and animations */
+        body {
+           font-family: 'Noto Kufi Arabic', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text color */
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keep it behind everything */
+        }
+
+
+
+        /* Keyframe animations for home page text */
+        @keyframes fadeInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Styles for blur effect on main content when modal is open */
+        .main-content-blurred {
+            filter: blur(4px); /* Adjust blur strength as needed */
+            pointer-events: none; /* Prevent interaction with blurred content */
+        }
+
+        /* ===== Features CSS ===== */
+.ud-features {
+  padding-top: 120px;
+  padding-bottom: 90px;
+}
+
+@media (max-width: 767px) {
+  .ud-features {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+}
+
+.ud-section-title {
+  max-width: 620px;
+  margin-bottom: 70px;
+}
+
+.ud-section-title span {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.ud-section-title h2 {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 55px;
+  text-transform: capitalize;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+}
+
+.ud-section-title p {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+@media (max-width: 767px) {
+  .ud-section-title p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+.ud-single-feature {
+  margin-bottom: 40px;
+}
+
+.ud-single-feature:hover .ud-feature-icon::before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ud-single-feature .ud-feature-icon {
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 14px;
+  background: var(--primary-color);
+  font-size: 32px;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ud-single-feature .ud-feature-icon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 14px;
+  background: var(--primary-color);
+  opacity: 0.2;
+  z-index: -1;
+  -webkit-transform: rotate(23deg);
+  transform: rotate(23deg);
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.ud-single-feature .ud-feature-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 12px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .ud-single-feature .ud-feature-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.ud-single-feature .ud-feature-desc {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 40px;
+}
+
+.ud-single-feature .ud-feature-link {
+  font-weight: 500;
+  color: var(--body-color);
+}
+
+.ud-single-feature .ud-feature-link:hover {
+  color: var(--primary-color);
+}
+
+        /* Modal specific styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px); /* Tailwind's backdrop-blur-md */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #1a202c; /* bg-gray-900 equivalent */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+            padding: 1.5rem; /* p-6 */
+            max-width: 48rem; /* max-w-3xl (768px) */
+            width: 100%;
+            z-index: 51;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 0.75rem; /* top-3 */
+            right: 0.75rem; /* right-3 */
+            color: #a0aec0; /* text-gray-400 */
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+        .modal-close-button:hover {
+            color: #fff; /* hover:text-white */
+        }
+
+        .modal-image-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh; /* max-h-[70vh] */
+            object-fit: contain;
+            border-radius: 0.5rem; /* rounded-lg */
+        }
+
+        .modal-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(45, 55, 72, 0.75); /* bg-gray-700 bg-opacity-75 */
+            color: #fff;
+            padding: 0.5rem; /* p-2 */
+            border-radius: 9999px; /* rounded-full */
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .modal-nav-button:hover {
+            background-color: #4a5568; /* hover:bg-gray-600 */
+        }
+        .modal-nav-button.left { left: 0.5rem; } /* ml-2 */
+        .modal-nav-button.right { right: 0.5rem; } /* mr-2 */
+    </style>
+</head>
 <body>
-<h1>TEST</h1>
-<h2>TEST</h2>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <canvas id="star-canvas"></canvas>
+
+    <div id="root" class="min-h-screen bg-gray-900 text-gray-100 font-inter flex flex-col"></div>
+
+    <script>
+        // --- Global State Management ---
+        const appState = {
+            activePage: 'home',
+            isModalOpen: false,
+            modalImages: [],
+            modalTitle: '',
+        };
+
+        // --- Data (Moved from React component) ---
+        const modelsData = [
+            {
+                id: 'model1',
+                name: 'Lantern | مصباح زيتي',
+                mainPhoto: 'assets/models/photos/MisbahZayti_1.0.jpg',
+                additionalPhotos: [
+                    'assets/models/photos/MisbahZayti_1.0.jpg',
+                    'assets/models/photos/misbah_textures_ structure.png',
+                ],
+                formats: { blend: 'assets/models/blend/misbah_Zayti.blend', fbx: 'assets/models/fbx/misbah_Zayti.fbx', textures: 'assets/models/texture/texture_for_misbah.zip' },
+            },
+            {
+                id: 'model2',
+                name: 'Dallah | دلة',
+                mainPhoto: 'assets/models/photos/dalah1.jpg',
+                additionalPhotos: [
+                    'assets/models/photos/dalah1.jpg',
+                    'assets/models/photos/dallah_color.png',
+                ],
+                formats: { blend: 'assets/models/blend/dallah_1.0.blend', fbx: 'assets/models/fbx/dallah_1.0.fbx' },
+            },
+            {
+                id: 'model3',
+                name: 'Saudi Mabkhara | مبخرة سعودية',
+                mainPhoto: 'assets/models/photos/saudi_mabkhara_1.0.png',
+                additionalPhotos: [
+                    'assets/models/photos/saudi_mabkhara_1.0.png',
+                    'assets/models/photos/main_color_Black.png',
+                    'assets/models/photos/steel.png',
+                    'assets/models/photos/wood_Oud_texture.png'
+                ],
+                formats: { blend: 'assets/models/blend/Saudi_Mabkhara_1.0.blend', fbx: 'assets/models/fbx/Saudi_Mabkhara_1.0.fbx', textures: 'assets/models/texture/oud_texture.zip' },
+            },
+            {
+                id: 'model4',
+                name: 'LowPoly Sword 1.0, Animated | سيف مع انميشن ',
+                mainPhoto: 'assets/models/photos/s1_128.jpg',
+                additionalPhotos: [
+                    'assets/models/photos/s1_512.jpg',
+                    'assets/models/photos/s1_v2_128.jpg',
+                ],
+                formats: { blend: 'assets/models/blend/LowPoly_Sword.blend', fbx: 'assets/models/fbx/LowPoly_sword_1.0.fbx', textures: 'assets/models/texture/sword_normal_texture.zip' },
+            },
+            {
+                id: 'model5',
+                name: 'Saudi Arabia Flag animated | علم السعودية متحرك',
+                mainPhoto: 'assets/models/photos/saudi_flag.png',
+                additionalPhotos: [
+                    'assets/models/photos/saudi_flag2.png',
+                    'assets/models/photos/saudi_flag.png',
+                    'assets/models/photos/saudi_flag_texture_str.png'
+                ],
+                formats: { blend: 'assets/models/blend/Saudi_Flag.blend', fbx: 'assets/models/fbx/Saudi_Flag.fbx', textures: 'assets/models/texture/saudi_Flag_Texture.jpg.zip' },
+            },
+            {
+                id: 'model6',
+                name: 'sofa av 1.0 | جلسة',
+                mainPhoto: 'assets/models/photos/sofa_arab_v1.0.png',
+                additionalPhotos: [
+                    'assets/models/photos/sofa_arab_v1.0.png',
+                    'assets/models/photos/sofa_arab_texture_str.png',
+                    'assets/models/photos/sofa_arabv.png',
+                ],
+                formats: { blend: 'assets/models/blend/sofa_arab_v1.0.blend', fbx: 'assets/models/fbx/sofa_arab_v1.0.fbx', textures: 'assets/models/texture/sofa_arab_v1.0.zip' },
+            },
+            {
+                id: 'model7',
+                name: 'GameBoy inspired | نموذج مستلهم من قيم بوي',
+                mainPhoto: 'assets/models/photos/GameBoy_inspired_m1.0.png',
+                additionalPhotos: [
+                    'assets/models/photos/GameBoy_inspired_m1.0.png',
+                    'assets/models/photos/GameBoy_inspired_m1.0_2.png',
+                    'assets/models/photos/GameBoy_inspired_m1.0_3.png',
+                    'assets/models/photos/GameBoy_inspired_m1.0_4.png',
+                ],
+                formats: { blend: 'assets/models/blend/GameBoy_inspired_m1.0.blend', fbx: 'assets/models/fbx/GameBoy_inspired_m1.0.fbx'},
+            },
+            {
+                id: 'model8',
+                name: 'Keyboard | لوحة المفاتيح',
+                mainPhoto: 'assets/models/photos/Keyboard1.0.png',
+                additionalPhotos: [
+                    'assets/models/photos/Keyboard1.0.png',
+                    'assets/models/photos/Keyboard1.0_2.png',
+                ],
+                formats: { blend: 'assets/models/blend/KeyBoard1.0.blend', fbx: 'assets/models/fbx/KeyBoard1.0.fbx' },
+            },
+        ];
+
+        const projectsData = [
+            {
+                id: 'project1',
+                name: 'مشروع | room  1.0 ',
+                mainPhoto: 'assets/projects/project1.png',
+                description: 'نموذج زاوية غرفة مصغر',
+            },
+            {
+                id: 'project2',
+                name: 'مشروع | outdoor area, an 1.0',
+                mainPhoto: 'assets/projects/ar_1.0_final_render1.jpg',
+                description: ' جلسة خارجية، عربية ',
+            },
+            {
+                id: 'project3',
+                name: 'مشروع | outdoor area, an 1.0',
+                mainPhoto: 'assets/projects/bus_stop_june8_512._3.png',
+                description: '...',
+            },
+             {
+                id: 'project4',
+                name: 'Empty',
+                mainPhoto: 'assets/projects/upcoming.png',
+                description: 'for new project, comming soon..',
+            },
+        ];
+
+        const articlesData = [
+            {
+                id: 'article1',
+                topic: 'Optimizing 3D Models for Web',
+                mainPhoto: 'https://placehold.co/400x300/000000/FFFFFF?text=Web+Optim',
+                date: '2023-01-15', 
+                link: 'articles/blender_basics.html',
+            },
+            {
+                id: 'article2',
+                topic: 'Introduction to Blender Shaders',
+                mainPhoto: 'https://placehold.co/400x300/000000/FFFFFF?text=Blender',
+                date: '2023-03-22',
+                link: 'articles/blender_basics.html',
+            },
+            {
+                id: 'article3',
+                topic: 'Procedural Generation in Unreal Engine',
+                mainPhoto: 'https://placehold.co/400x300/000000/FFFFFF?text=Unreal',
+                date: '2023-05-10',
+                link: 'articles/blender_basics.html',
+            },
+        ];
+
+
+        // --- Core Rendering Logic ---
+        function updateAppState(newState) {
+            Object.assign(appState, newState);
+            renderApp(); // Re-render the application after state change
+        }
+
+        function navigateTo(page) {
+            updateAppState({ activePage: page });
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+        }
+
+        function openImageModal(images, title) {
+            updateAppState({ isModalOpen: true, modalImages: images, modalTitle: title });
+            document.querySelector('main').classList.add('main-content-blurred');
+        }
+
+        function closeImageModal() {
+            updateAppState({ isModalOpen: false, modalImages: [], modalTitle: '' });
+            document.querySelector('main').classList.remove('main-content-blurred');
+        }
+
+        function renderApp() {
+            const root = document.getElementById('root');
+            // Clear existing content to redraw
+            root.innerHTML = '';
+
+            // Append Header
+            root.appendChild(createHeaderComponent(navigateTo));
+
+            // Create and append Main Content area
+            const mainContent = document.createElement('main');
+            mainContent.className = 'flex-grow transition-all duration-300';
+            // Apply blur/pointer-events based on modal state (dynamic class applied below)
+            root.appendChild(mainContent);
+
+            // Render current page into Main Content
+            if (appState.activePage === 'home') {
+                mainContent.appendChild(createHomePageComponent());
+            } else if (appState.activePage === 'free-models') {
+                mainContent.appendChild(createFreeModelsPageComponent(modelsData, openImageModal));
+            } else if (appState.activePage === 'my-projects') {
+                mainContent.appendChild(createMyProjectsPageComponent(projectsData));
+            } else if (appState.activePage === 'articles') {
+                mainContent.appendChild(createArticlesPageComponent(articlesData));
+            } else if (appState.activePage === 'about-us') {
+                mainContent.appendChild(createAboutUsPageComponent());
+            }
+
+            // Render Modal if open
+            if (appState.isModalOpen) {
+                root.appendChild(createImageModalComponent(appState.modalImages, appState.modalTitle, closeImageModal));
+            }
+        }
+
+
+        // --- Component Functions (Plain JavaScript) ---
+
+        function createHeaderComponent(navigateToCallback) {
+            const header = document.createElement('header');
+            header.className = 'sticky top-0 z-50 bg-gray-800 bg-opacity-10 backdrop-blur-sm shadow-lg p-4 flex flex-col sm:flex-row items-center justify-between rounded-b-lg';
+
+            header.innerHTML = `
+                <div class="text-2xl font-bold text-purple-400 mb-4 sm:mb-0">
+                    Kyūb9
+                </div>
+                <nav class="flex flex-wrap justify-center gap-4 text-lg">
+                    <button id="nav-home" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Home</button>
+                    <button id="nav-free-models" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Free Models</button>
+                    <button id="nav-my-projects" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">My Projects</button>
+                    <button id="nav-articles" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Articles</button>
+                    <button id="nav-about-us" class="px-3 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">About Us</button>
+                </nav>
+                <div class="flex items-center gap-4 mt-4 sm:mt-0">
+                    <a href="https://www.instagram.com/kyub9p/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                         <img src="./assets/icons/instagram3.svg" alt="instagram icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.pinterest.com/Kyub9/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                        <img src="./assets/icons/pinterest.svg" alt="pinterest icon" class="w-8 h-8">
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                        <img src="./assets/icons/threads.svg" alt="threads app icon" class="w-8 h-8">
+                    </a>
+                    <a
+                        href="https://www.youtube.com/@kyub9p"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-red-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-700 transition-colors duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    >
+                        YouTube
+                    </a>
+                </div>
+            `;
+            // Attach event listeners after content is set
+            header.querySelector('#nav-home').addEventListener('click', () => navigateToCallback('home'));
+            header.querySelector('#nav-free-models').addEventListener('click', () => navigateToCallback('free-models'));
+            header.querySelector('#nav-my-projects').addEventListener('click', () => navigateToCallback('my-projects'));
+            header.querySelector('#nav-articles').addEventListener('click', () => navigateToCallback('articles'));
+            header.querySelector('#nav-about-us').addEventListener('click', () => navigateToCallback('about-us'));
+
+            return header;
+        }
+function createHomePageComponent() {
+    const container = document.createElement("div");
+    container.className = "relative h-screen overflow-hidden";
+
+    // Starfield Canvas (background)
+    const canvas = document.createElement("canvas");
+    canvas.className = "absolute top-0 left-0 w-full h-full z-0";
+    canvas.id = "star-canvas";
+    container.appendChild(canvas);
+
+    // ✅ Foreground Text Content
+    const content = document.createElement("div");
+    content.className = "relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4";
+    content.innerHTML = `
+        
+        <img src="./assets/icons/me.png" alt="Network Icon" class="w-19 h-19 scale-200"/>
+        <h3 class="text-2xl md:text-4xl font-normal mt-2 mb-1"></h3>
+      <p dir="rtl" class="text-white text-sm mt-1 text-center"> -   اهلاً فيك.. بهذا الموقع بتلقى مشاريعي الخاصة ومقالات  </p>
+      <p dir="rtl" class="text-white text-sm mt-1 text-center"> ونماذج  <span dir="ltr">3D</span> مجانية تقدر تعتمد عليها في شغلك :)</p>
+      <p class="text-sm text-purple-300">"قبل الإستخدام اقرأ اخر الصفحة" note</p>
+      <!-- Target Audience Section -->
+<div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto text-white text-center">
+  <!-- Game Developer -->
+  <div class="flex flex-col items-center px-4">
+    <img src="./assets/icons/Games_developer.png" alt="rocket icon" class="w-16 h-16 mb-4">
+    <h3 class="font-semibold text-lg mb-1">مطور ألعاب؟</h3>
+    <p class="text-xs">نماذجي المجانية بتساعدك تركز على البرمجة وتطوير لعبتك، بدون ما تشيل هم من وين تجيب نماذج تجرّب وتبني عليها مشاريعك</p>
+  </div>
+
+  <!-- Artist -->
+  <div class="flex flex-col items-center px-4">
+    <img src="./assets/icons/artist.png" alt="artist icon" class="w-16 h-16 mb-4">
+    <h3 class="font-semibold text-lg mb-1">فنان؟</h3>
+    <p class="text-xs">
+تقدر تستفيد من النماذج الجاهزة هنا  تساعدك تطبق أفكارك اسرع او تضيف لمسة لأعمالك ومشاريعك بستخدام مشهد/استوديو/ نموذج جاهز وبكذا توفّر وقتك، وجهدك لشغل أهم بدل ما تبدأ من الصفر وتنشئ كل شي بنفسك</p>
+  </div>
+
+  <!-- Beginner -->
+  <div class="flex flex-col items-center px-4">
+    <img src="./assets/icons/beginners.png" alt="beginner icon" class="w-16 h-16 mb-4">
+    <h3 class="font-semibold text-lg mb-1">مبتدئ؟</h3>
+    <p class="text-xs font-semibold text-sky-200">مهتم بمجال النمذجة والفن "الثلاثي الأبعاد" وتبغى تتعلم؟</p>
+    <p class="text-xs mt-1 ">
+    
+تقدر تلاقي مصادر مفيدة لتعلم برنامج "بلندر" من   <span class=" font-semibold text-sky-200" dir="ltr"> YouTube Tutorials </span> .  على قناتي، او من المقالات هنا و من حساباتي على المنصات،
+      وبعد أنت مرحّب فيك تستخدم نماذجي المجانية عشان تتعلم بشكل عملي
+        
+        </p>
+  </div>
+
+  <!-- Hobbyist -->
+  <div class="flex flex-col items-center px-4">
+    <img src="./assets/icons/hobbyist.png" alt="hobbyist icon" class="w-16 h-16 mb-4">
+    <h3 class="font-semibold text-lg mb-1">هاوي؟</h3>
+    <p class="text-xs">إي حتى لو كنت هاوي </p>
+     <p class="text-xs mt-1 ">تقدر تستخدم نماذجي عشان تتسلّى أو تجرب </p>
+  </div>
+</div>
+
+<!-- Outro Note -->
+<div class="mt-8 flex items-center justify-center gap-4 px-4 py-8 text-white text-center">
+  <!-- Icon stays on the right -->
+  <img src="./assets/icons/pin.png" alt="pin Icon" class="w-4 h-4 md:w-10 md:h-10" />
+
+  <!-- Arabic text, centered -->
+  <div dir="rtl" class="text-lg md:text-xl leading-snug text-center">
+    <p class="text-sm">🐈 - وش ما كان هدفك، لك كامل الحرية في استخدام النماذج، بس بشرط!</p>
+    <p class="text-sm mt-1 text-purple-300">  🌟 تعطيني كريديت <span class="text-gray-300"> <span class="text-gray-200">يعني :- تذكر حساباتي وتسوي منشن بسيط لها، شكرًا لك...   بالتوفيق </span> </p>
+  </div>
+</div>
+
+
+
+
+
+
+    `;
+    container.appendChild(content);
+
+    // --- Starfield Animation ---
+    const ctx = canvas.getContext("2d");
+    let animationFrameId;
+    let stars = [];
+    const numStars = 150;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+        stars = [];
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                speed: Math.random() * 0.5 + 0.2
+            });
+        }
+    }
+
+    function animateStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#fff";
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fill();
+            star.y += star.speed;
+            if (star.y > canvas.height) {
+                star.y = 0;
+                star.x = Math.random() * canvas.width;
+            }
+        });
+        animationFrameId = requestAnimationFrame(animateStars);
+    }
+
+    function handleResize() {
+        resizeCanvas();
+        createStars();
+    }
+
+    window.addEventListener("resize", handleResize);
+    resizeCanvas();
+    createStars();
+    animateStars();
+
+    container.cleanup = () => {
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener("resize", handleResize);
+    };
+
+    return container;
+}
+
+
+        function createFreeModelsPageComponent(models, openModalCallback) {
+            const section = document.createElement('section');
+            section.id = 'free-models';
+            section.className = 'py-12 px-4 md:px-8 lg:px-16';
+
+            const title = document.createElement('h2');
+            title.className = 'text-4xl font-bold text-center mb-10 text-blue-400';
+            title.textContent = 'Free Models';
+            section.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8';
+            section.appendChild(grid);
+
+            models.forEach(model => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl';
+
+                const img = document.createElement('img');
+                img.src = model.mainPhoto;
+                img.alt = model.name;
+                img.className = 'w-full h-64 object-cover cursor-pointer rounded-t-xl';
+                img.addEventListener('click', () => openModalCallback(model.additionalPhotos, model.name));
+                img.onerror = (e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x300/000000/FFFFFF?text=Image+Error`; };
+                card.appendChild(img);
+
+                const textDiv = document.createElement('div');
+                textDiv.className = 'p-6';
+                card.appendChild(textDiv);
+
+                const h3 = document.createElement('h3');
+                h3.className = 'text-2xl font-semibold text-white mb-3';
+                h3.textContent = model.name;
+                textDiv.appendChild(h3);
+
+                const formatDiv = document.createElement('div');
+                formatDiv.className = 'flex flex-wrap gap-3';
+                textDiv.appendChild(formatDiv);
+
+                for (const format in model.formats) {
+                    const link = document.createElement('a');
+                    link.href = model.formats[format];
+                    link.download = model.formats[format].split('/').pop();
+                    link.className = 'inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md transform hover:-translate-y-0.5';
+                    link.textContent = format === 'textures' ? 'Download Textures (.ZIP)': `Download .${format.toUpperCase()}`;
+                    formatDiv.appendChild(link);
+                }
+                grid.appendChild(card);
+            });
+
+            return section;
+        }
+
+        function createMyProjectsPageComponent(projects) {
+            const section = document.createElement('section');
+            section.id = 'my-projects';
+            section.className = 'py-12 px-4 md:px-8 lg:px-16';
+
+            const title = document.createElement('h2');
+            title.className = 'text-4xl font-bold text-center mb-10 text-white';
+            title.textContent = 'My Projects';
+            section.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8';
+            section.appendChild(grid);
+
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl';
+
+                const img = document.createElement('img');
+                img.src = project.mainPhoto;
+                img.alt = project.name;
+                img.className = 'w-full h-64 object-cover rounded-t-xl';
+                img.onerror = (e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x300/000000/FFFFFF?text=Image+Error`; };
+                card.appendChild(img);
+
+                const textDiv = document.createElement('div');
+                textDiv.className = 'p-6';
+                card.appendChild(textDiv);
+
+                const h3 = document.createElement('h3');
+                h3.className = 'text-2xl font-semibold text-center text-white mb-3';
+                h3.textContent = project.name;
+                textDiv.appendChild(h3);
+
+                const p = document.createElement('p');
+                p.className = 'text-gray-300 text-base text-center';
+                p.textContent = project.description;
+                textDiv.appendChild(p);
+
+                grid.appendChild(card);
+            });
+
+            return section;
+        }
+
+        function createArticlesPageComponent(articles) {
+            const section = document.createElement('section');
+            section.id = 'articles';
+            section.className = 'py-12 px-4 md:px-8 lg:px-16';
+
+            const title = document.createElement('h2');
+            title.className = 'text-4xl font-bold text-center mb-10 text-blue-400';
+            title.textContent = 'Articles';
+            section.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8';
+            section.appendChild(grid);
+
+            articles.forEach(article => {
+                const cardLink = document.createElement('a');
+                cardLink.href = article.link;
+                cardLink.className = 'bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl block';
+
+
+                const img = document.createElement('img');
+                img.src = article.mainPhoto;
+                img.alt = article.topic;
+                img.className = 'w-full h-64 object-cover rounded-t-xl';
+                img.onerror = (e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x300/000000/FFFFFF?text=Image+Error`; };
+                cardLink.appendChild(img); // Appending to cardLink (the 'a' tag)
+                
+
+
+                const textDiv = document.createElement('div');
+                textDiv.className = 'p-6';
+
+                const h3 = document.createElement('h3');
+                h3.className = 'text-2xl font-semibold text-white mb-3';
+                h3.textContent = article.topic;
+                textDiv.appendChild(h3);
+
+                const p = document.createElement('p');
+                p.className = 'text-gray-400 text-sm';
+                p.textContent = `Published: ${article.date}`;
+                textDiv.appendChild(p);
+                
+                cardLink.appendChild(textDiv); // Appending to cardLink (the 'a' tag)
+
+                grid.appendChild(cardLink);
+            });
+
+            return section;
+        }
+
+        function createAboutUsPageComponent() {
+            const section = document.createElement('section');
+            section.id = 'about-us';
+            section.className = 'py-12 px-4 md:px-8 lg:px-16 flex flex-col lg:flex-row items-center justify-center min-h-[calc(100vh-80px)]';
+            section.innerHTML = `
+                <div class="lg:w-2/3 text-center lg:text-left mb-8 lg:mb-0 lg:pr-12">
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">About Us</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-prose mx-auto lg:mx-0">
+                        Welcome to Kyub9! I'm passionate about 3D modeling and development, and this platform is my way of sharing that passion with you. Here, you'll find a collection of free 3D models suitable for various uses, from game development and learning to testing and personal projects. My goal is to foster a community where creativity thrives and resources are freely accessible.
+                        <br /><br />
+                        Beyond the models, I also share insights and tutorials in the articles section, covering topics from optimization techniques to advanced rendering. The "My Projects" section showcases some of my professional and personal endeavors, giving you a glimpse into the diverse range of work I undertake. Whether you're a seasoned developer, an aspiring artist, or just curious about the world of 3D, I hope you find something valuable here.
+                        <br /><br />
+                        Thank you for visiting, and I look forward to connecting with you!
+                    </p>
+                </div>
+                <div class="lg:w-1/3 flex flex-col items-center lg:items-end gap-6">
+                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">Connect With Me</h3>
+                    <div class="flex flex-wrap justify-center lg:justify-end gap-4">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.64 4.931 4.887.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.07 4.85-1.64 4.931 1.64 4.931 4.887 4.931-1.64.058-1.64.069-4.849.069-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.779-1.64-4.931-4.887-.058-1.265-.069-1.645-.069-4.849 0-3.204.012-3.584.07-4.85 1.64-4.931 1.64-4.931 4.887-4.931zM12 0c-3.695 0-4.175.014-5.617.07C2.69 0 0 2.69 0 6.383c-.056 1.442-.07 1.922-.07 5.617s.014 4.175.07 5.617c.148 3.252 1.64 4.779 4.887 4.931 1.265.058 1.645.069 4.849.069 3.204 0 3.584-.012 4.85-.07 3.252-.148 4.779-1.64 4.931-4.887.058-1.265.069-1.645.069-4.849 0-3.204.012-3.584-.07-4.85-1.64-4.931-1.64-4.931 4.887-4.931zM12 5.833c3.402 0 6.167 2.765 6.167 6.167s-2.765 6.167-6.167 6.167-6.167-2.765-6.167-6.167 2.765-6.167 6.167-6.167zm0 2c-2.302 0-4.167 1.865-4.167 4.167s1.865 4.167 4.167 4.167 4.167-1.865 4.167-4.167-1.865-4.167-4.167-4.167zm6.495-3.138c-.805 0-1.458.653-1.458 1.458 0 .805.653 1.458 1.458 1.458s1.458-.653 1.458-1.458c0-.805-.653-1.458-1.458-1.458z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.81 16.5c-.75-.33-1.25-.83-1.25-1.58 0-.58.33-1.08.83-1.33.5-.25 1.08-.33 1.58-.08.5.25.75.75.75 1.25 0 .5-.25.92-.67 1.17-.42.25-.83.33-1.25.08zm4.56-5.5c-.33-.67-.83-1.17-1.58-1.5-.75-.33-1.5-.42-2.17-.25-.67.17-1.17.58-1.5 1.08-.33.5-.42 1.08-.25 1.75.17.67.58 1.17 1.08 1.5.5.33 1.08.42 1.75.25.67-.17 1.17-.58 1.5-1.08.33-.5.42-1.08.25-1.75zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm-1.5 14c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.5 18h-2.5v-12h2.5c2.761 0 5 2.239 5 5s-2.239 5-5 5zm0-8h-1.5v6h1.5c1.654 0 3-1.346 3-3s-1.346-3-3-3zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm-1.5 18h-2.5v-12h2.5c2.761 0 5 2.239 5 5s-2.239 5-5 5zm0-8h-1.5v6h1.5c1.654 0 3-1.346 3-3s-1.346-3-3-3z"/></svg>
+                        </a>
+                    </div>
+                    <p class="text-lg text-gray-300 mt-6">
+                        Email: <a href="mailto:your.email@example.com" class="text-blue-400 hover:underline">your.email@example.com</a>
+                    </p>
+                </div>
+            `;
+            return section;
+        }
+
+        function createImageModalComponent(images, title, onCloseCallback) {
+            let currentImageIndex = 0;
+
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'modal-overlay'; // Using custom class for blur
+            modalOverlay.addEventListener('click', (event) => {
+                if (event.target === modalOverlay) { // Only close if clicking the background, not content
+                    onCloseCallback();
+                }
+            });
+
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+            modalOverlay.appendChild(modalContent);
+
+            const closeButton = document.createElement('button');
+            closeButton.className = 'modal-close-button';
+            closeButton.textContent = '×';
+            closeButton.addEventListener('click', onCloseCallback);
+            modalContent.appendChild(closeButton);
+
+            const modalTitle = document.createElement('h3');
+            modalTitle.className = 'text-2xl font-bold text-white mb-4 text-center';
+            modalTitle.textContent = title;
+            modalContent.appendChild(modalTitle);
+
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'modal-image-container';
+            modalContent.appendChild(imageContainer);
+
+            const modalImage = document.createElement('img');
+            modalImage.className = 'modal-image';
+            modalImage.onerror = (e) => { e.target.onerror = null; e.target.src = `https://placehold.co/800x600/000000/FFFFFF?text=Image+Error`; };
+            imageContainer.appendChild(modalImage);
+
+            const updateImage = () => {
+                modalImage.src = images[currentImageIndex];
+            };
+
+            const nextImage = () => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateImage();
+                updateImageCounter();
+            };
+
+            const prevImage = () => {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateImage();
+                updateImageCounter();
+            };
+
+            let imageCounterDiv;
+            const updateImageCounter = () => {
+                if (imageCounterDiv) {
+                    imageCounterDiv.textContent = `${currentImageIndex + 1} / ${images.length}`;
+                }
+            };
+
+
+            if (images.length > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.className = 'modal-nav-button left';
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', prevImage);
+                imageContainer.appendChild(prevButton);
+
+                const nextButton = document.createElement('button');
+                nextButton.className = 'modal-nav-button right';
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', nextImage);
+                imageContainer.appendChild(nextButton);
+
+                imageCounterDiv = document.createElement('div');
+                imageCounterDiv.className = 'text-center text-gray-400 mt-4';
+                modalContent.appendChild(imageCounterDiv);
+                updateImageCounter();
+            }
+
+            updateImage(); // Set initial image
+
+            // Keyboard navigation for modal
+            const handleKeyDown = (event) => {
+                if (event.key === 'ArrowRight' && images.length > 1) {
+                    nextImage();
+                } else if (event.key === 'ArrowLeft' && images.length > 1) {
+                    prevImage();
+                } else if (event.key === 'Escape') {
+                    onCloseCallback();
+                }
+            };
+            window.addEventListener('keydown', handleKeyDown);
+
+            // Cleanup function for modal (to remove event listener)
+            modalOverlay.cleanup = () => {
+                window.removeEventListener('keydown', handleKeyDown);
+            };
+
+            return modalOverlay;
+        }
+
+        // --- Initial Render on Page Load ---
+        document.addEventListener('DOMContentLoaded', renderApp);
+
+        // --- Cleanup for previous page components (important for plain JS SPA) ---
+        // When renderApp is called, we remove the previous page's element.
+        // If that page component had active event listeners or animations (like HomePage's canvas),
+        // we need to explicitly clean them up.
+        // This is a simple mechanism; for very complex apps, a more robust cleanup is needed.
+        let currentPageElement = null; // Keep track of the currently rendered page element
+
+        const originalRenderApp = renderApp; // Store original for modification
+
+        renderApp = function() {
+            if (currentPageElement && typeof currentPageElement.cleanup === 'function') {
+                currentPageElement.cleanup(); // Call cleanup if available
+            }
+
+            // Execute the original rendering logic
+            originalRenderApp();
+
+            // After rendering, update currentPageElement to the new main content div
+            // Note: This assumes only one main content element with pages
+            const mainContentContainer = document.querySelector('main');
+            if (mainContentContainer && mainContentContainer.children.length > 0) {
+                currentPageElement = mainContentContainer.children[0]; // Get the actual page element
+            }
+        };
+
+    </script>
+
+    <script>
+   
+
+    let stars = [];
+    const numStars = 150;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+        stars = [];
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                speed: Math.random() * 0.5 + 0.2
+            });
+        }
+    }
+
+    function animateStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#fff";
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fill();
+            star.y += star.speed;
+            if (star.y > canvas.height) {
+                star.y = 0;
+                star.x = Math.random() * canvas.width;
+            }
+        });
+        requestAnimationFrame(animateStars);
+    }
+
+    window.addEventListener("resize", () => {
+        resizeCanvas();
+        createStars();
+    });
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+</script>
+
 </body>
 </html>
